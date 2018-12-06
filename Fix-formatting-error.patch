@@ -1,0 +1,25 @@
+From e100ad337aee8a5974da57d480718ca03b23130f Mon Sep 17 00:00:00 2001
+From: Jan Chaloupka <jchaloup@redhat.com>
+Date: Fri, 8 Jun 2018 13:44:21 +0200
+Subject: [PATCH] Fix formatting error
+
+---
+ decode.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/decode.go b/decode.go
+index 4db19c0..5d26931 100644
+--- a/decode.go
++++ b/decode.go
+@@ -115,7 +115,7 @@ func (p *Packet) headerString(headers []interface{}) string {
+ 	if len(headers) >= 2 {
+ 		if addr, ok := headers[0].(addrHdr); ok {
+ 			if _, ok := headers[1].(addrHdr); ok {
+-				return fmt.Sprintf("%s > %s IP in IP: ",
++				return fmt.Sprintf("%s > %s IP in IP: %s",
+ 					addr.SrcAddr(), addr.DestAddr(), p.headerString(headers[1:]))
+ 			}
+ 		}
+-- 
+2.7.5
+
